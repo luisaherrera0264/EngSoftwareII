@@ -1,0 +1,15 @@
+
+.tela {
+    margin: 15px;
+    background-color: blue;
+}
+
+.sub-tela {
+    margin: 10px;
+    background-color: orange;
+}
+
+.figura {
+    width: 250px;
+    height: 350px;
+}
