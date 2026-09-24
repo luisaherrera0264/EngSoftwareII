@@ -1,45 +1,37 @@
 import React from 'react';
-import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, NavLink } from 'react-router-dom';
 import './App.css';
 
-import Principal from './Principal';
+import Index from './Index';
 import Sobre from './Sobre';
-import imagemDoce from './assets/doce.png';
 
 export default function App() {
   return (
     <BrowserRouter>
-      <div className="page-wrapper">
-        {/* Menu de navegação que altera as rotas */}
-        <header className="navbar">
-          <Link to="/" className="nav-button">Home</Link>
-          <Link to="/sobre" className="nav-button">Sobre</Link>
-        </header>
-
-        {/* Hero Banner */}
-        <section className="hero-banner">
-          <div className="hero-left">
-            <div className="title-wrapper">
-              <h1>Doce Vida</h1>
-              <div className="pink-underline"></div>
-            </div>
+      <div className="app-container">
+        {/* Topo Superior sem Emoji */}
+        <div className="top-bar">
+          <div>✉ contato@docevida.com.br</div>
+          <div className="top-logo-badge">
+            DOCE VIDA
           </div>
-          
-          <div className="hero-right">
-            <div className="pink-card">
-              <img 
-                src={imagemDoce} 
-                alt="Doces Artesanais" 
-                className="sweet-img" 
-              />
-            </div>
-          </div>
-        </section>
+          <div>📞 (11) 99999-8888</div>
+        </div>
 
-        {/* Rotas que alternam as páginas */}
-        <main className="content-container">
+        {/* Menu de Navegação */}
+        <nav className="navbar">
+          <NavLink to="/" className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`} end>
+            Home
+          </NavLink>
+          <NavLink to="/sobre" className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}>
+            Sobre Nós
+          </NavLink>
+        </nav>
+
+        {/* Conteúdo Dinâmico */}
+        <main>
           <Routes>
-            <Route path="/" element={<Principal />} />
+            <Route path="/" element={<Index />} />
             <Route path="/sobre" element={<Sobre />} />
           </Routes>
         </main>
@@ -47,4 +39,3 @@ export default function App() {
     </BrowserRouter>
   );
 }
-export default App
